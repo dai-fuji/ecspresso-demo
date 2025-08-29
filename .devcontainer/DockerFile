@@ -7,6 +7,13 @@ RUN curl "https://awscli.amazonaws.com/awscli-exe-linux-x86_64.zip" -o "awscliv2
   && npm install -g typescript \
   && npm install -g aws-cdk \
   && npm install -g npm-check-updates
+
+# Install Terraform
+RUN curl -fsSL https://releases.hashicorp.com/terraform/1.9.8/terraform_1.9.8_linux_amd64.zip -o terraform.zip \
+  && unzip terraform.zip \
+  && sudo install terraform /usr/local/bin/terraform \
+  && rm -f terraform terraform.zip
+
 RUN curl -sL -O https://github.com/kayac/ecspresso/releases/download/v2.0.0/ecspresso_2.0.0_linux_amd64.tar.gz \
   && tar -zxvf ecspresso_2.0.0_linux_amd64.tar.gz \
   && sudo install ecspresso /usr/local/bin/ecspresso \

@@ -1,7 +1,12 @@
 {
-  "name": "Node.js & TypeScript",
+  "name": "Node.js & TypeScript & Terraform",
   "build": {
     "dockerfile": "Dockerfile"
   },
-  "postCreateCommand": "npm install"
+  "customizations": {
+    "vscode": {
+      "extensions": ["hashicorp.terraform"]
+    }
+  },
+  "postCreateCommand": "npm install && terraform --version"
 }
