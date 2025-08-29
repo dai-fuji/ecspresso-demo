@@ -1,26 +1,7 @@
 {
-  "name": "ECS Deployment Environment",
-  "image": "mcr.microsoft.com/devcontainers/base:ubuntu-22.04",
-  "features": {
-    "ghcr.io/devcontainers/features/aws-cli:1": {
-      "version": "latest"
-    },
-    "ghcr.io/devcontainers/features/terraform:1": {
-      "version": "latest"
-    }
+  "name": "Node.js & TypeScript",
+  "build": {
+    "dockerfile": "Dockerfile"
   },
-  "postCreateCommand": ".devcontainer/setup.sh",
-  "customizations": {
-    "vscode": {
-      "extensions": [
-        "hashicorp.terraform",
-        "ms-vscode.vscode-json",
-        "ms-azuretools.vscode-docker"
-      ]
-    }
-  },
-  "mounts": [
-    "source=${localWorkspaceFolder}/.aws,target=/home/vscode/.aws,type=bind,consistency=cached"
-  ],
-  "remoteUser": "vscode"
+  "postCreateCommand": "npm install"
 }
