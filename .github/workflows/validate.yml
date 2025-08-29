@@ -22,12 +22,10 @@ jobs:
           aws-secret-access-key: ${{ secrets.AWS_SECRET_ACCESS_KEY }}
           aws-region: us-west-2
 
-      - name: Install ecspresso
-        run: |
-          curl -L -o ecspresso.tar.gz https://github.com/kayac/ecspresso/releases/latest/download/ecspresso_linux_amd64.tar.gz
-          tar -xzf ecspresso.tar.gz
-          sudo mv ecspresso /usr/local/bin/
-          ecspresso version
+      - name: Setup ecspresso
+        uses: kayac/ecspresso@v2
+        with:
+          version: latest
 
       - name: Validate task definition
         run: |
