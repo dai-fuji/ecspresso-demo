@@ -1,0 +1,44 @@
+{
+  "deploymentConfiguration": {
+    "maximumPercent": 200,
+    "minimumHealthyPercent": 100
+  },
+  "deploymentController": {
+    "type": "CODE_DEPLOY"
+  },
+  "desiredCount": 2,
+  "enableECSManagedTags": false,
+  "enableExecuteCommand": false,
+  "healthCheckGracePeriodSeconds": 0,
+  "launchType": "FARGATE",
+  "loadBalancers": [
+    {
+      "containerName": "ecspresso-demo-container",
+      "containerPort": 80,
+      "targetGroupArn": "arn:aws:elasticloadbalancing:us-west-2:571705099822:targetgroup/ecspresso-demo-tg-blue/1588050666e5e2b0"
+    }
+  ],
+  "networkConfiguration": {
+    "awsvpcConfiguration": {
+      "assignPublicIp": "ENABLED",
+      "securityGroups": ["sg-052e4eb503ca8d48a"],
+      "subnets": ["subnet-0bd8bda47c5527f7c", "subnet-0dc09661e9da72b2f"]
+    }
+  },
+  "pendingCount": 0,
+  "platformFamily": "Linux",
+  "platformVersion": "1.4.0",
+  "propagateTags": "NONE",
+  "runningCount": 0,
+  "schedulingStrategy": "REPLICA",
+  "tags": [
+    {
+      "key": "Environment",
+      "value": "dev"
+    },
+    {
+      "key": "Name",
+      "value": "ecspresso-demo-service"
+    }
+  ]
+}

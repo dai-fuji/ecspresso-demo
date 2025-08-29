@@ -1,0 +1,13 @@
+region: ""
+cluster: ecspresso-demo-cluster
+service: ecspresso-demo-service
+service_definition: ecs-service-def.json
+task_definition: ecs-task-def.json
+timeout: "10m0s"
+codedeploy:
+  application_name: ecspresso-demo-codedeploy-app
+  deployment_group_name: ecspresso-demo-deployment-group
+plugins:
+  - name: tfstate
+    config:
+      url: s3://ecsdemo-tfstate-fujimoto/ecspresso-demo/terraform.tfstate

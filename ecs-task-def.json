@@ -1,0 +1,52 @@
+{
+  "containerDefinitions": [
+    {
+      "cpu": 0,
+      "essential": true,
+      "healthCheck": {
+        "command": ["CMD-SHELL", "curl -f http://localhost:80/ || exit 1"],
+        "interval": 30,
+        "retries": 3,
+        "startPeriod": 60,
+        "timeout": 5
+      },
+      "image": "nginx:latest",
+      "logConfiguration": {
+        "logDriver": "awslogs",
+        "options": {
+          "awslogs-group": "/ecs/ecspresso-demo",
+          "awslogs-region": "us-west-2",
+          "awslogs-stream-prefix": "ecs"
+        }
+      },
+      "name": "ecspresso-demo-container",
+      "portMappings": [
+        {
+          "appProtocol": "",
+          "containerPort": 80,
+          "hostPort": 80,
+          "protocol": "tcp"
+        }
+      ]
+    }
+  ],
+  "cpu": "256",
+  "executionRoleArn": "arn:aws:iam::571705099822:role/ecspresso-demo-ecs-task-execution-role",
+  "family": "ecspresso-demo-task",
+  "ipcMode": "",
+  "memory": "512",
+  "networkMode": "awsvpc",
+  "pidMode": "",
+  "requiresCompatibilities": ["FARGATE"],
+  "tags": [
+    {
+      "key": "Environment",
+      "value": "test"
+    },
+    {
+      "key": "Name",
+      "value": "ecspresso-demo-task-definition"
+    }
+  ],
+  "taskRoleArn": "arn:aws:iam::571705099822:role/ecspresso-demo-ecs-task-role"
+}
