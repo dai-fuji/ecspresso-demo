@@ -1,0 +1,20 @@
+# AWS Configuration
+aws_region = "us-west-2"
+
+# Project Configuration
+project_name = "ecspresso-demo"
+environment  = "dev"
+
+# Network Configuration
+vpc_cidr           = "10.0.0.0/16"
+availability_zones = ["us-west-2a", "us-west-2c"]
+
+# Container Configuration
+container_image     = "nginx:latest"
+container_port      = 80
+health_check_path   = "/"
+
+# ECS Configuration
+task_cpu       = 256
+task_memory    = 512
+desired_count  = 2 
